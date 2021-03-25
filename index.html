@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="style.css">
+     <title>Expense Tracker</title>
+</head>
+<body>
+     <div class="container">
+          <div class="tracker">
+               <div class="tracker__board">
+                    <div class="board__menu">
+                         <h3 class="board__title">Exp.Tracker</h3>
+                         <input type="text" class="search" placeholder="Search">
+                    </div>
+                    <div class="board__menu">
+                         <p class="board__link">Overview</p>
+                         <p class="board__link">Income</p>
+                         <p class="board__link">Expense</p>
+                    </div>
+                    <div class="board__inputs">
+                         <form action="" class="board__form">
+                              <select name="pets" class="type form__input">
+                                   <option value="exp">expense</option>
+                                   <option value="inc">income</option>
+                              </select>
+                              <input type="number" class="amount form__input" placeholder="amount">
+                              <input type="text" class="name form__input" placeholder="name">
+                              <button type="submit" class="button form__input not__completed">Submit</button>
+                         </form>
+                    </div>
+                    <div class="board__display">
+                         <div class="board__card exp__border">
+                              <div class="board__card--name">Name</div>
+                              <div class="board__card--amount">$300</div>
+                         </div>
+                         <div class="board__card exp__border">
+                              <div class="board__card--name">Name</div>
+                              <div class="board__card--amount">$300</div>
+                         </div>
+                         <div class="board__card inc__border">
+                              <div class="board__card--name">Name</div>
+                              <div class="board__card--amount">$300</div>
+                         </div>
+                         <div class="board__card exp__border">
+                              <div class="board__card--name">Name</div>
+                              <div class="board__card--amount">$300</div>
+                         </div>
+                         <div class="board__card inc__border">
+                              <div class="board__card--name">Name</div>
+                              <div class="board__card--amount">$300</div>
+                         </div>
+                         <div class="board__card exp__border">
+                              <div class="board__card--name">Name</div>
+                              <div class="board__card--amount">$300</div>
+                         </div>
+                         <div class="board__card inc__border">
+                              <div class="board__card--name">Name</div>
+                              <div class="board__card--amount">$300</div>
+                         </div>
+                    </div>
+               </div>
+               <div class="tracker__data">
+                    <div class="data__total">
+                         <h2 class="total__title">Total</h2>
+                         <h3 class="total__amount">$2000</h3>
+                    </div>
+                    <div class="data__total">
+                         <h2 class="total__title">Expense</h2>
+                         <h3 class="total__amount total__expense">$2000</h3>
+                    </div>
+                    <div class="data__total">
+                         <h2 class="total__title">Income</h2>
+                         <h3 class="total__amount total__income">$2000</h3>
+                    </div>
+               </div>
+          </div>
+     </div>
+</body>
+</html>
