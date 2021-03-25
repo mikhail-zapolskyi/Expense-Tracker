@@ -6,6 +6,5 @@
 - Mikhail Zapolskyi
 
 ------------------------------------------------------
-#### Initial commit
-
-#### Created index.html and style.css. Expense tracker board 
+##### Initial Commit : Created files index.html, style.css, app.js
+##### Second Commit : Completed index.html markup and style.css design
