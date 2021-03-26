@@ -5,6 +5,3 @@
 ### Author
 - Mikhail Zapolskyi
 
-------------------------------------------------------
-##### Initial Commit : Created files index.html, style.css, app.js
-##### Second Commit : Completed index.html markup and style.css design
