@@ -1,5 +1,5 @@
 # Expense Tracker
-- HTML, Tailwind, JS
+- HTML, CSS, JS
 - Ver: 1.0.0
 
 ### Author
