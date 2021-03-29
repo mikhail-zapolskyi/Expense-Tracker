@@ -22,7 +22,7 @@
 
 .tracker__board {
      padding: 2rem;
-     background-color: rgb(231, 231, 231);
+     background-color: rgb(255, 255, 255);
      border-top-left-radius: 2rem;
      border-bottom-left-radius: 2rem;
      box-shadow: 10px 10px 39px -15px rgb(177, 177, 177);
@@ -30,7 +30,7 @@
 
 .tracker__data {
      padding: 2rem;
-     background-color: rgb(194, 196, 202);
+     background-color: rgb(243, 243, 243);
      border-top-right-radius: 2rem;
      border-bottom-right-radius: 2rem;
      box-shadow: 10px 10px 39px -15px rgb(179, 179, 179);
@@ -83,7 +83,31 @@ select:focus {
      padding: 1rem;
      background-color: rgb(255, 255, 255);
      display: grid;
-     grid-template-columns: 5fr 1fr;
+     grid-template-columns: 5% 85% 10%;
+     align-items: center;
+}
+
+.board__card:not(:last-of-type){
+     border-bottom: 1px solid grey;
+} 
+
+.board__card--icon {
+     font-size: 1.2rem;
+     font-weight: 700;
+}
+
+.board__card--icon:hover {
+     color:rgb(255, 68, 0);
+     cursor: pointer;
+}
+
+.board__card--amount {
+     justify-self: end;
+}
+
+.board__card--date {
+     padding-top: .5rem;
+     font-size: 0.6rem;
 }
 
 .exp__border {
@@ -157,10 +181,13 @@ select:focus {
           border-top-right-radius: 0;
           border-bottom-right-radius: 2rem;
      }
-
+     
      .board__form {
           display: grid;
           grid-template-columns: none;
+     }
+     .board__card {
+          width: 95%;
      }
 
      .form__input {
@@ -188,7 +215,7 @@ select:focus {
           display: grid;
           grid-template-columns: 1fr;
      }
-
+     
      .board__title {
           text-align: center;
           padding-bottom: 1rem;
