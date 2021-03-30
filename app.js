@@ -26,7 +26,7 @@ let modelController = (() => {
                exp : [],
                inc : []
           },
-
+          allItems : [],
           total : 0,
           totalExp : 0,
           totalInc : 0
@@ -49,6 +49,7 @@ let modelController = (() => {
                     ? item = new Income(generateDate(), generateID(), type, Number(amt), disc) 
                     : item = new Expense(generateDate(), generateID(), type, Number(amt), disc);
                data.items[type].push(item);
+               data.allItems.push(item);
                return item;
           },
 
@@ -97,7 +98,12 @@ let viewController = (() => {
           discription : '.discription',
           button : '.button',
           board : '.board__display',
-          icon : '.board__card--icon'
+          card : '.board__card',
+          overview : '.overview',
+          income : '.income',
+          expense : '.expense',
+          icon : '.board__card--icon',
+          search : '.search'
      };
 
      return {
@@ -125,6 +131,21 @@ let viewController = (() => {
                document.querySelector(DOM.board).insertAdjacentHTML('beforeend', html);
           },
 
+          displayAllItems : (arr) => {
+               document.querySelector(DOM.board).innerHTML = "";
+               arr.map(item => {
+                    let html = `<div class="board__card ${item.type}__border ${item.type}" id="${item.id}">
+                    <div class="board__card--icon">X</div>
+                    <div>
+                         <div class="board__card--discription">${item.discription}</div>
+                         <div class="board__card--date">${item.date}</div>
+                    </div>
+                    <div class="board__card--amount">$${item.amount}</div>
+                    </div>`;
+                    document.querySelector(DOM.board).insertAdjacentHTML('beforeend', html);
+               })
+          },
+
           removeItem : (id) => {
                let child = document.querySelector(`#${id}`);
                document.querySelector(DOM.board).removeChild(child);
@@ -134,19 +155,40 @@ let viewController = (() => {
 
 let controller = ((model, view) => {
      let dom = view.getDOM();
+     let data = model.getData();
 
      let addItem = () => {
           let btn = document.querySelector(dom.button);
+          
           btn.addEventListener('click', e => {
                e.preventDefault();
                let item = model.generateItem(view.getValue(dom.type), view.getValue(dom.amount), view.getValue(dom.discription));
-               view.displayItem(item);
+               view.displayItem(item, data.allItems);
                updateAll();
                model.resetInputs(dom.amount);
                model.resetInputs(dom.discription);
                model.focus(dom.type);
-               console.log(model.getData().items.exp);
-               });
+          });
+     };
+
+     let removeItem = () => {
+          let icon = document.querySelector(dom.board);
+          icon.addEventListener('click', e => {
+               // step back to parent element to find id and type
+               let id = e.target.parentNode.id;
+               let type = e.target.parentNode.className.split(' ')[2];
+               // execute findItem function 
+               let item = model.findItem(id, type);
+               // find item index in array
+               let itemIndex = data.items[`${type}`].indexOf(item[0]);
+               let itemInAllItemsIndex = data.allItems.indexOf(item[0]);
+               // delete from both arrays item
+               data.items[`${type}`].splice(itemIndex, 1);
+               data.allItems.splice(itemInAllItemsIndex, 1);
+               view.removeItem(id);
+               updateAll();
+          })
+          
      };
 
      let updateAll = () => {
@@ -154,29 +196,40 @@ let controller = ((model, view) => {
           view.displayTotals(dom.totalExpense, model.dataTotalExp());
           view.displayTotals(dom.totalAmount, model.dataTotal());
      };
-
-     let removeItem = () => {
-          let icon = document.querySelector(dom.board);
-          icon.addEventListener('click', e => {
-               let id = e.target.parentNode.id;
-               let type = e.target.parentNode.className.split(' ')[2];
-               let item = model.findItem(id, type);
-               let itemIndex = model.getData().items[`${type}`].indexOf(item[0]);
-               model.getData().items[`${type}`].splice(itemIndex, 1);
-               view.removeItem(id);
-               updateAll();
+     
+     let searchItems = () => {
+          let search = document.querySelector(dom.search);
+          search.addEventListener('input', (e) => {
+               let items = data.allItems
+               .filter(item => item.amount === Number(e.target.value) || item.discription === e.target.value);
+               if (e.target.value){
+                    view.displayAllItems(items);
+               } else {
+                    view.displayAllItems(data.allItems);
+               }
           })
-          
      };
 
-     let reset = () => {};
-     
+     let displayItems = () => {
+          document.querySelector(dom.overview).addEventListener('click', e => {
+               view.displayAllItems(data.allItems);
+          })
 
+          document.querySelector(dom.income).addEventListener('click', e => {
+               view.displayAllItems(data.items['inc']);
+          })
+
+          document.querySelector(dom.expense).addEventListener('click', e => {
+               view.displayAllItems(data.items['exp']);
+          })
+     }
      return {
           init : () => {
                console.log('App started');
                addItem();
                removeItem();
+               searchItems();
+               displayItems();
           }
      }
 })(modelController, viewController);
