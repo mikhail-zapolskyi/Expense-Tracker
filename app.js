@@ -121,12 +121,12 @@ let viewController = (() => {
 
           displayItem : (obj) => {
                let html = `<div class="board__card ${obj.type}__border ${obj.type}" id="${obj.id}">
-                    <div class="board__card--icon">X</div>
                     <div>
                          <div class="board__card--discription">${obj.discription}</div>
                          <div class="board__card--date">${obj.date}</div>
                     </div>
                     <div class="board__card--amount">$${obj.amount}</div>
+                    <div class="board__card--icon">X</div>
                </div>`;
                document.querySelector(DOM.board).insertAdjacentHTML('beforeend', html);
           },
@@ -135,12 +135,12 @@ let viewController = (() => {
                document.querySelector(DOM.board).innerHTML = "";
                arr.map(item => {
                     let html = `<div class="board__card ${item.type}__border ${item.type}" id="${item.id}">
-                    <div class="board__card--icon">X</div>
-                    <div>
-                         <div class="board__card--discription">${item.discription}</div>
-                         <div class="board__card--date">${item.date}</div>
-                    </div>
-                    <div class="board__card--amount">$${item.amount}</div>
+                         <div>
+                              <div class="board__card--discription">${item.discription}</div>
+                              <div class="board__card--date">${item.date}</div>
+                         </div>
+                         <div class="board__card--amount">$${item.amount}</div>
+                         <div class="board__card--icon">X</div>
                     </div>`;
                     document.querySelector(DOM.board).insertAdjacentHTML('beforeend', html);
                })
