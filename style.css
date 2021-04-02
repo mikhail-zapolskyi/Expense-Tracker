@@ -178,3 +178,100 @@ html {
      border-right: 2rem solid rgb(0, 199, 43);
 }
 
+@media only screen and (max-width: 60em),
+       only screen and (max-height: 48em) {
+     .center__container {
+          width: 85vw;
+          height: 85vh;
+          grid-template-columns: 1fr;
+          grid-row-gap: .5rem;
+     }
+     
+     .tracker__data {
+          height: auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: .5rem;
+     }
+
+     .title__container {
+          width: 100%;
+          height: auto;
+          grid-column: 1 / 3;
+     }
+
+     .board__inputs {
+          width: 100%;
+          height: auto;
+          margin-top: 0;
+          padding: 1rem;
+          border: 1px solid rgb(158, 158, 158);
+          display: flex;
+          flex-direction: column;
+          border-radius: 5px;
+     }
+
+     .totals__container {
+          width: 100%;
+          height: auto;
+          margin-top: 0;
+          padding: 1rem;
+          border: 1px solid rgb(158, 158, 158);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-radius: 5px;
+     }
+
+     .data__total {
+          width: 90%;
+          height: auto;
+          margin: .5rem;
+          padding: 1rem;
+          background-color: rgb(236, 236, 236);
+          display: flex;
+          flex-direction: column;
+          border-radius: 5px;
+     }
+
+     .main__container {
+          width: 100%;
+          height: 90%;
+          max-height: 85vh;
+          border: 1px solid rgb(158, 158, 158);
+          display: flex;
+          flex-direction: column;
+          border-radius: 5px;
+     }
+}
+
+@media only screen and (max-width: 30em),
+       only screen and (max-height: 30em){
+     .board__inputs {
+          grid-column: 1 / 3;
+     }
+
+     .board__form {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: .5rem;
+     }
+
+     .form__input {
+          width: 100%;
+     }
+
+     .totals__container {
+          grid-column: 1 / 3;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          border-radius: 5px;
+     }
+     
+     .total__title {
+          font-size: 1.2rem;
+          padding: 1rem 0;
+     }
+}
